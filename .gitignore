@@ -7,3 +7,4 @@ dropbear/dropbear
 dropbear/dropbearconvert
 dropbear/dropbearkey
 binutils/binutils-*
+musl/musl-*
