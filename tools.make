@@ -1,3 +1,3 @@
 TOOLSPREFIX=$(PWD)/../tools
-PATH=$(TOOLSPREFIX)/bin:$(PATH)
-CC="'"musl-gcc"' -Wl,-Bstatic -static-libgcc"
+export PATH := $(TOOLSPREFIX)/bin:$(PATH)
+HOST=x86_64-linux-musl
