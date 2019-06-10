@@ -16,4 +16,5 @@ $(BBTAR).sig:
 $(BBTAR).sha256:
 	wget $(BBURL).sha256
 
-
+clean:
+	rm -f $(BBTAR) $(BBTAR).sig $(BBTAR).sha256
