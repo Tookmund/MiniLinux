@@ -54,7 +54,6 @@ fi
 
 # Get our Linux arch and defconfig
 LINUX_ARCH=`echo "$ARCH" | sed 's/-.*//'`
-LINUX_DEFCONFIG=defconfig
 case "$LINUX_ARCH" in
     i*86) LINUX_ARCH=i386 ;;
     x32) LINUX_ARCH=x86_64 ;;
