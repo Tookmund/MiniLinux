@@ -1,5 +1,7 @@
-build:
-	./build.sh
+PROGVER=8.2.0
+PROG=gcc
+PROGCOMP=xz
+PROGURL=http://ftp.gnu.org/gnu/gcc/$(PROGFULL)/
+PROGSIG=sig
 
-clean:
-	./build.sh clean
+include ../prog.make
