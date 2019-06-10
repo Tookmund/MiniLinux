@@ -15,7 +15,7 @@ pass1: extract
 		rm -rf pass1 && \
 		mkdir pass1 && \
 		cd pass1 && \
-		../configure --prefix=$$PREFIX --target=$$TRIPLE --with-sysroot=no \
+		../configure --prefix=$$PREFIX --target=$$TRIPLE \
     --enable-languages=c --with-newlib --disable-libssp --disable-nls \
     --disable-libquadmath --disable-threads --disable-decimal-float \
 	--disable-shared --disable-libmudflap --disable-libgomp --disable-libatomic \
@@ -28,7 +28,7 @@ pass2: extract
 		rm -rf pass2 && \
 		mkdir pass2 && \
 		cd pass2 && \
-		../configure --prefix=$$PREFIX --target=$$TRIPLE --with-sysroot=no \
+		../configure --prefix=$$PREFIX --target=$$TRIPLE \
 		--enable-languages=c --disable-libmudflap \
 		--disable-libsanitizer --disable-nls \
 		$$GCC_MULTILIB_CONFFLAGS && \
