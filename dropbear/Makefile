@@ -1,27 +1,15 @@
-DBVER=2019.78
-DB=dropbear-$(DBVER)
-DBTAR=$(DB).tar.bz2
-DBURL=https://matt.ucc.asn.au/dropbear/releases/$(DBTAR)
+PROGVER=2019.78
+PROG=dropbear
+PROGCOMP=bz2
+PROGURL=https://matt.ucc.asn.au/dropbear/releases/
+PROGSIG=asc
 
-dropbear: $(DB)
-	cd $(DB) && \
+dropbear-build: $(PROG)
+	cd $(PROGFULL) && \
 		./configure --disable-zlib --enable-static && \
 		make && \
 		cp dropbear dropbearkey dbclient dropbearconvert ..
 
-$(DB): $(DBTAR)
-	tar xavf $(DBTAR)
-	touch $(DB)
+include ../prog.makefile
 
-$(DBTAR): $(DBTAR).asc
-	wget $(DBURL)
-	gpg --verify $(DBTAR).asc
-	touch $(DBTAR)
-
-$(DBTAR).asc:
-	wget $(DBURL).asc
-	touch $(DBTAR).asc
-
-clean:
-	rm -f $(DBTAR)*
-	rm -rf $(DB)
+clean: $(PROG)-clean
