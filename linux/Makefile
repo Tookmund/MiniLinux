@@ -23,6 +23,10 @@ clean:
 	rm -f $(LINTAR)*
 	rm -rf $(LINVER)
 
-headers: $(LINVER)
+$(LINVER)/config: $(LINVER)
+	cd $(LINVER) && \
+		make defconfig
+
+headers: $(LINVER)/config
 	cd $(LINVER) && \
 		make headers_install ARCH=$$LINUX_ARCH INSTALL_HDR_PATH="$$PREFIX/$$TRIPLE"
