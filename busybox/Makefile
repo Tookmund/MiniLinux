@@ -6,7 +6,8 @@ BBURL=https://busybox.net/downloads/$(BBTAR)
 busybox: $(BB)
 	cd busybox-$(BBVER) && \
 		make defconfig && \
-		make busybox LDFLAGS="--static"
+		make busybox LDFLAGS="--static" && \
+		cp busybox ../busybox
 
 $(BB): $(BBTAR)
 	tar xavf $(BBTAR)
