@@ -21,3 +21,4 @@ $(LINVER).tar.sign:
 
 clean:
 	rm -f $(LINTAR)*
+	rm -rf $(LINVER)
