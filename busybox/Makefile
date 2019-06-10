@@ -3,17 +3,13 @@ BB=busybox-$(BBVER)
 BBTAR=$(BB).tar.bz2
 BBURL=https://busybox.net/downloads/$(BBTAR)
 
+include ../tools.make
+
 busybox: $(BB)
 	cd busybox-$(BBVER) && \
-		make defconfig && \
-		make busybox LDFLAGS="--static" && \
-		mkdir -p ../bin && \
-		cp busybox ../bin
-	cd bin && \
-		for i in $$(cat ../busybox-list); \
-		do \
-			ln -s busybox $$i; \
-		done
+		make CROSS_COMPILE=$(HOST)- CONFIG_PREFIX=../bin defconfig && \
+		make CROSS_COMPILE=$(HOST)- LDFLAGS="--static" busybox && \
+		make CONFIG_PREFIX=../bin install
 
 $(BB): $(BBTAR)
 	tar xavf $(BBTAR)
