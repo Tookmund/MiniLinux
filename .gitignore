@@ -6,3 +6,4 @@ dropbear/dbclient
 dropbear/dropbear
 dropbear/dropbearconvert
 dropbear/dropbearkey
+binutils/binutils-*
