@@ -4,6 +4,7 @@ LINURL=https://cdn.kernel.org/pub/linux/kernel/v4.x/$(LINTAR)
 
 $(LINVER): $(LINTAR)
 	tar xvf $(LINTAR)
+	touch $(LINVER)
 
 $(LINTAR): $(LINTAR).xz $(LINTAR).sign
 	unxz -k $(LINTAR).xz
