@@ -10,8 +10,11 @@ include ../tools.makefile
 
 build: $(PROG)
 	cd $(PROG) && \
-		./configure --prefix=$(TOOLSPREFIX) --syslibdir=$(TOOLSPREFIX)/lib && \
+		./configure --prefix=$$PREFIX/$$TRIPLE --with-sysroot=no  \
+		--enable-debug --enable-optimize \
+		CROSS_COMPILE="$$TRIPLE-" CC="$$TRIPLE-gcc" && \
 		make && \
 		make install
 
 clean: $(PROG)-clean
+
