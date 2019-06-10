@@ -23,6 +23,6 @@ $(SIGFILE):
 	$(FETCH) $(PROGLOC).$(PROGSIG)
 	touch $(SIGFILE)
 
-$(PROG)-clean:
+clean:
 	rm -f $(PROGTAR)*
 	rm -rf $(PROGFULL)
