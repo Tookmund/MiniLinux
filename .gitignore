@@ -1,4 +1,5 @@
 busybox/busybox-*
+busybox/bin
 linux/linux-*
 uclibc/uClibc-*
 dropbear/dropbear-*

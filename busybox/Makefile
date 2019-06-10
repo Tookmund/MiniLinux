@@ -7,7 +7,13 @@ busybox: $(BB)
 	cd busybox-$(BBVER) && \
 		make defconfig && \
 		make busybox LDFLAGS="--static" && \
-		cp busybox ../busybox
+		mkdir -p ../bin && \
+		cp busybox ../bin
+	cd bin && \
+		for i in $$(cat ../busybox-list); \
+		do \
+			ln -s busybox $$i; \
+		done
 
 $(BB): $(BBTAR)
 	tar xavf $(BBTAR)
@@ -26,6 +32,6 @@ $(BBTAR).sha256:
 	wget $(BBURL).sha256
 
 clean:
-	rm -f busybox
+	rm -rf bin/
 	rm -f $(BBTAR) $(BBTAR).sig $(BBTAR).sha256
 	rm -rf $(BB)
