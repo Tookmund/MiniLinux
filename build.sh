@@ -82,9 +82,19 @@ then
     GCC_MULTILIB_CONFFLAGS="--with-multilib-list=mx32"
 fi
 
+export GCC_MULTILIB_CONFFLAGS
+
 cd binutils
 make pass1
 
-cd ../../gcc
+cd ../gcc
 make pass1
 
+cd ../linux
+make headers
+
+cd ../musl
+make build
+
+cd ../gcc
+make pass2
