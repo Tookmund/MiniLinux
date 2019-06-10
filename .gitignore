@@ -8,3 +8,7 @@ dropbear/dropbearconvert
 dropbear/dropbearkey
 binutils/binutils-*
 musl/musl-*
+gcc/gcc-*
+gcc/mpc-*
+gcc/mpfr-*
+gcc/gmp-*
