@@ -11,9 +11,11 @@ busybox: $(BB)
 
 $(BB): $(BBTAR)
 	tar xavf $(BBTAR)
+	touch $(BB)
 
 $(BBTAR): $(BBTAR).sig $(BBTAR).sha256
 	wget $(BBURL)
+	touch $(BBTAR)
 	gpg --verify $(BBTAR).sig
 	sha256sum -c $(BBTAR).sha256
 
