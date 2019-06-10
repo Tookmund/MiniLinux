@@ -18,8 +18,24 @@ pass1: extract
 		../configure --prefix=$$PREFIX --target=$$TRIPLE --with-sysroot=no \
     --enable-languages=c --with-newlib --disable-libssp --disable-nls \
     --disable-libquadmath --disable-threads --disable-decimal-float \
---disable-shared --disable-libmudflap --disable-libgomp --disable-libatomic \
---disable-lto-plugin
+	--disable-shared --disable-libmudflap --disable-libgomp --disable-libatomic \
+	--disable-lto-plugin \
+	$$GCC_MULTILIB_CONFFLAGS
+
+
+pass2: extract
+	cd $(PROGFULL) && \
+		rm -rf pass2 && \
+		mkdir pass2 && \
+		cd pass2 && \
+		../configure --prefix=$$PREFIX --target=$$TRIPLE --with-sysroot=no \
+		--enable-languages=$LANGUAGES --disable-libmudflap \
+		--disable-libsanitizer --disable-nls \
+		$$GCC_MULTILIB_CONFFLAGS && \
+		make && \
+		make install
+	# un"fix" headers
+	rm -rf "$$PREFIX/lib/gcc/$$TRIPLE"/*/include-fixed/ "$$PREFIX/lib/gcc/$$TRIPLE"/*/include/stddef.h
 
 gcc-build: $(PROGFULL) deps
 	mv gmp mpc mpfr $(PROGFULL)
