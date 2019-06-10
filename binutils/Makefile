@@ -4,6 +4,4 @@ PROGCOMP=xz
 PROGURL=http://ftpmirror.gnu.org/binutils/
 PROGSIG=sig
 
-include ../prog.makefile
-
-clean: $(PROG)-clean
+include ../prog.make
