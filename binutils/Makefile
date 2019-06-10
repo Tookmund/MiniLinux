@@ -1,21 +1,9 @@
-BINVER=2.32
-BIN=binutils-$(BINVER)
-BINTAR=$(BIN).tar.xz
-BINURL=http://ftpmirror.gnu.org/binutils/$(BINTAR)
+PROGVER=2.32
+PROG=binutils
+PROGCOMP=xz
+PROGURL=http://ftpmirror.gnu.org/binutils/
+PROGSIG=sig
 
-$(BIN): $(BINTAR)
-	tar xavf $(BINTAR)
-	touch $(BIN)
+include ../prog.makefile
 
-$(BINTAR): $(BINTAR).sig
-	wget $(BINURL)
-	gpg --verify $(BINTAR).sig
-	touch $(BINTAR)
-
-$(BINTAR).sig:
-	wget $(BINURL).sig
-	touch $(BINTAR).sig
-
-clean:
-	rm -f $(BINTAR)*
-	rm -rf $(BIN)
+clean: $(PROG)-clean
