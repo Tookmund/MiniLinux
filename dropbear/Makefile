@@ -15,3 +15,5 @@ dropbear-build: $(PROGFULL)
 		mkdir -p ../bin && \
 		cp dropbear dropbearkey dbclient dropbearconvert ../bin
 
+bin-clean:
+	rm -rf bin/
