@@ -12,5 +12,6 @@ dropbear-build: $(PROGFULL)
 	cd $(PROGFULL) && \
 		./configure --disable-zlib --enable-static && \
 		make && \
-		cp dropbear dropbearkey dbclient dropbearconvert ..
+		mkdir -p ../bin && \
+		cp dropbear dropbearkey dbclient dropbearconvert ../bin
 
