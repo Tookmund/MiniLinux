@@ -26,4 +26,6 @@ $(BBTAR).sha256:
 	wget $(BBURL).sha256
 
 clean:
+	rm -f busybox
 	rm -f $(BBTAR) $(BBTAR).sig $(BBTAR).sha256
+	rm -rf $(BB)
