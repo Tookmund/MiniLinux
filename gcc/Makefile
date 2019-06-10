@@ -29,7 +29,7 @@ pass2: extract
 		mkdir pass2 && \
 		cd pass2 && \
 		../configure --prefix=$$PREFIX --target=$$TRIPLE --with-sysroot=no \
-		--enable-languages=$LANGUAGES --disable-libmudflap \
+		--enable-languages=c --disable-libmudflap \
 		--disable-libsanitizer --disable-nls \
 		$$GCC_MULTILIB_CONFFLAGS && \
 		make && \
