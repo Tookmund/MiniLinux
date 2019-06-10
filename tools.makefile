@@ -1,1 +1,0 @@
-TOOLSPREFIX=$(PWD)/../tools

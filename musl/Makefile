@@ -4,17 +4,12 @@ PROGCOMP=gz
 PROGURL=https://www.musl-libc.org/releases/
 PROGSIG=asc
 
-include ../prog.makefile
-
-include ../tools.makefile
+include ../prog.make
 
 build: $(PROG)
 	cd $(PROG) && \
-		./configure --prefix=$$PREFIX/$$TRIPLE --with-sysroot=no  \
+		./configure --prefix=$$PREFIX \
 		--enable-debug --enable-optimize \
 		CROSS_COMPILE="$$TRIPLE-" CC="$$TRIPLE-gcc" && \
 		make && \
 		make install
-
-clean: $(PROG)-clean
-
