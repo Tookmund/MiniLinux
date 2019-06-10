@@ -22,3 +22,7 @@ $(LINVER).tar.sign:
 clean:
 	rm -f $(LINTAR)*
 	rm -rf $(LINVER)
+
+headers: $(LINVER)
+	cd $(LINVER) && \
+		make headers_install ARCH=$$LINUX_ARCH INSTALL_HDR_PATH="$$PREFIX/$$TRIPLE"
