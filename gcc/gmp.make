@@ -4,4 +4,6 @@ PROGCOMP=xz
 PROGURL=http://ftp.gnu.org/gnu/gmp/
 PROGSIG=sig
 
+all: $(PROG)-dep
+
 include ../prog.make

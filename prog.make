@@ -26,3 +26,8 @@ $(SIGFILE):
 clean:
 	rm -f $(PROGTAR)*
 	rm -rf $(PROGFULL)
+
+$(PROG)-dep: $(PROGFULL)
+	if [ ! -L $(PROG) ]; then \
+		ln -s $(PWD)/$(PROGFULL) $(PROG); \
+	fi
