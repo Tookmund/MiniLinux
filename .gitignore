@@ -2,3 +2,7 @@ busybox/busybox-*
 linux/linux-*
 uclibc/uClibc-*
 dropbear/dropbear-*
+dropbear/dbclient
+dropbear/dropbear
+dropbear/dropbearconvert
+dropbear/dropbearkey
