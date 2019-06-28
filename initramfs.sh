@@ -1,15 +1,17 @@
 #!/bin/sh
-cp ../../initramfs .
-for i in `ls ../../busybox/bin`
-do
-	echo "dir /$i	755	0	0" >> initramfs
-	for d in `ls ../../busybox/bin/$i`
-	do
-		echo "file /bin/$d	../../busybox/bin/$i/$d	755	0	0" >> initramfs
-	done
-done
+# run as fakeroot
+set -e 
+mkdir initramfs
+cd initramfs
 
-for i in `ls ../../dropbear/bin`
-do
-	echo "file /bin/$i	../../dropbear/bin/$i" >> initramfs
-done
+mkdir dev
+chmod 755 dev
+chown root:root dev
+
+mknod dev/console c 5 1
+mknod dev/null c 1 3
+chmod 644 dev/*
+
+cp -r ../../../busybox/bin/* .
+cp ../../../dropbear/bin/* ./bin
+cp linuxrc init

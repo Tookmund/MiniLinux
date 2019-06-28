@@ -16,7 +16,8 @@ cd ../musl-cross-make/linux-*/
 cp ../../.config .
 make oldconfig
 export PATH=$PWD/../../tools/bin:$PATH
-../../initramfs.sh
+fakeroot ../../initramfs.sh
+
 make -j$(nproc)
 cp arch/x86/boot/bzImage ../../
 du -h ../../bzImage
